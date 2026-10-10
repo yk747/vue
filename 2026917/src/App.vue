@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import OnePage from './components/2.vue'
+import OnePage from './components/HelloWorld.vue'
 </script>
