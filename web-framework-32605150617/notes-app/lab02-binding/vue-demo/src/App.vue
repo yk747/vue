@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <h1>记事本第 2 章实验</h1>
+    <h1>记事本 notes-app · 第 2 章实验</h1>
     <NoteCard />
     <hr />
-    <h2> 记事本</h2>
+    <h2>📝 记事本雏形（综合任务）</h2>
 
     <input v-model="newNote" placeholder="输入笔记内容" @keyup.enter="addNote" />
     <button @click="addNote">添加</button>
@@ -35,21 +35,21 @@ export default {
   components: { NoteCard },
   data() {
     return {
-      newNote: '',
-      priority: '中',
-      tags: [],
-      notes: [],
-      nextId: 1
+      newNote: '',      // 输入框内容
+      priority: '中',    // 优先级（单选，单值）
+      tags: [],         // 标签（复选，数组）
+      notes: [],        // 笔记列表：{ id, text, priority, tags }
+      nextId: 1         // 唯一 id 发号器
     }
   },
   methods: {
     addNote() {
-      if (!this.newNote.trim()) return
+      if (!this.newNote.trim()) return            // 空内容不添加
       this.notes.push({
-        id: this.nextId++,
+        id: this.nextId++,                        // 唯一 id：:key 的规范取值
         text: this.newNote.trim(),
         priority: this.priority,
-        tags: [...this.tags]
+        tags: [...this.tags]                      // 复制一份，避免和表单联动
       })
       this.newNote = ''
     }
